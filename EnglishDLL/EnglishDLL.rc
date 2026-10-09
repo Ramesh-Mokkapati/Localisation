@@ -1,0 +1,17 @@
+// EnglishDLL.rc - English string resources
+#include <winresrc.h>
+#include "resource.h"
+
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+
+STRINGTABLE
+BEGIN
+    IDS_HELLO           "Hello, World!"
+    IDS_GREETING        "Welcome to the Localisation Demo"
+    IDS_LANGUAGE        "Language: English"
+    IDS_GOODBYE         "Goodbye!"
+    IDS_INSTRUCTION     "Use the Language menu to switch languages"
+    IDS_ABOUT_TITLE     "About SDIApp"
+    IDS_ABOUT_TEXT      "SDIApp - Localisation Demo\nVisual Studio 2022 / MFC / Win32\n\nDemonstrates runtime language switching\nusing resource-only DLLs and AfxSetResourceHandle."
+    IDS_BTN_EXIT        "Exit"
+END

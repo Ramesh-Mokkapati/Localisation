@@ -1,0 +1,61 @@
+// DialogApp.rc - English (default) resources
+#include <afxres.h>
+#include "resource.h"
+
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+
+/////////////////////////////////////////////////////////////////////////////
+// Dialog
+
+IDD_DIALOG_MAIN DIALOGEX 0, 0, 360, 209
+STYLE DS_SETFONT | DS_MODALFRAME | DS_CENTER | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Localisation Demo - Dialog Application"
+FONT 9, "Segoe UI", 400, 0, 0x1
+BEGIN
+    // ----- Language selection group -----
+    GROUPBOX        "Language Selection",  IDC_STATIC,          7,   7, 110, 57
+    CONTROL         "&English", IDC_RADIO_ENGLISH, "Button",
+                    BS_AUTORADIOBUTTON | WS_GROUP | WS_TABSTOP, 16,  21,  94, 11
+    CONTROL         "&French",  IDC_RADIO_FRENCH,  "Button",
+                    BS_AUTORADIOBUTTON,                          16,  35,  94, 11
+    CONTROL         "&German",  IDC_RADIO_GERMAN,  "Button",
+                    BS_AUTORADIOBUTTON,                          16,  49,  94, 11
+
+    // ----- Localised strings group -----
+    GROUPBOX        "Localised Strings",   IDC_STATIC,         125,   7, 228, 130
+
+    LTEXT           "Hello:",       IDC_STATIC,                133,  22,  50, 10
+    LTEXT           "",             IDC_STATIC_HELLO,          188,  22, 158, 10
+
+    LTEXT           "Greeting:",    IDC_STATIC,                133,  38,  50, 10
+    LTEXT           "",             IDC_STATIC_GREETING,       188,  38, 158, 10
+
+    LTEXT           "Language:",    IDC_STATIC,                133,  54,  50, 10
+    LTEXT           "",             IDC_STATIC_LANGUAGE,       188,  54, 158, 10
+
+    LTEXT           "Goodbye:",     IDC_STATIC,                133,  70,  50, 10
+    LTEXT           "",             IDC_STATIC_GOODBYE,        188,  70, 158, 10
+
+    LTEXT           "Instruction:", IDC_STATIC,                133,  86,  50, 20
+    LTEXT           "",             IDC_STATIC_INSTRUCTION,    188,  86, 158, 20
+
+    // ----- Active language status bar -----
+    GROUPBOX        "Active Language",     IDC_STATIC,           7, 154, 346, 24
+    LTEXT           "",                    IDC_STATIC_STATUS,    15, 166, 330, 10
+
+    // ----- Buttons -----
+    DEFPUSHBUTTON   "E&xit",               IDOK,                283, 188,  70, 14
+END
+
+/////////////////////////////////////////////////////////////////////////////
+// String Table
+
+STRINGTABLE
+BEGIN
+    IDS_HELLO           "Hello, World!"
+    IDS_GREETING        "Welcome to the Localisation Demo"
+    IDS_LANGUAGE        "Language: English (Default)"
+    IDS_GOODBYE         "Goodbye!"
+    IDS_INSTRUCTION     "Select a language using the radio buttons above"
+    IDS_BTN_EXIT        "E&xit"
+END

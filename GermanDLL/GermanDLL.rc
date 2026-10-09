@@ -1,0 +1,58 @@
+// GermanDLL.rc - German string, menu, and accelerator resources
+// #pragma code_page(65001) tells the RC compiler to treat this file as UTF-8.
+#pragma code_page(65001)
+#include <winresrc.h>
+#include <afxres.h>
+#include "resource.h"
+
+LANGUAGE LANG_GERMAN, SUBLANG_GERMAN
+
+/////////////////////////////////////////////////////////////////////////////
+// Menu
+
+IDR_MAINFRAME MENU
+BEGIN
+    POPUP "&Datei"
+    BEGIN
+        MENUITEM "Be&enden",                        ID_APP_EXIT
+    END
+    POPUP "&Sprache"
+    BEGIN
+        MENUITEM "&Englisch\tCtrl+E",               ID_LANGUAGE_ENGLISH
+        MENUITEM "&Französisch\tCtrl+F",            ID_LANGUAGE_FRENCH
+        MENUITEM "&Deutsch\tCtrl+G",                ID_LANGUAGE_GERMAN
+    END
+    POPUP "&Hilfe"
+    BEGIN
+        MENUITEM "Ü&ber SDIApp...",                 ID_APP_ABOUT
+    END
+END
+
+/////////////////////////////////////////////////////////////////////////////
+// Accelerator Table
+
+IDR_MAINFRAME ACCELERATORS
+BEGIN
+    "E",    ID_LANGUAGE_ENGLISH,    VIRTKEY, CONTROL
+    "F",    ID_LANGUAGE_FRENCH,     VIRTKEY, CONTROL
+    "G",    ID_LANGUAGE_GERMAN,     VIRTKEY, CONTROL
+END
+
+/////////////////////////////////////////////////////////////////////////////
+// String Table
+
+STRINGTABLE
+BEGIN
+    IDR_MAINFRAME       "SDIApp"
+    IDS_HELLO           "Hallo, Welt!"
+    IDS_GREETING        "Willkommen zur Lokalisierungsdemo"
+    IDS_LANGUAGE        "Sprache: Deutsch"
+    IDS_GOODBYE         "Auf Wiedersehen!"
+    IDS_INSTRUCTION     "Verwenden Sie das Menü Sprache zum Wechseln der Sprache"
+    IDS_ABOUT_TITLE     "Über SDIApp"
+    IDS_ABOUT_TEXT      "SDIApp — Lokalisierungsdemo\nVisual Studio 2022 / MFC / Win32\n\nZeigt dynamischen Sprachwechsel\nmit ressourcenspezifischen DLLs."
+    IDS_BTN_EXIT        "Beenden"
+    ID_LANGUAGE_ENGLISH "Zur englischen Sprache wechseln\nEnglisch"
+    ID_LANGUAGE_FRENCH  "Zur französischen Sprache wechseln\nFranzösisch"
+    ID_LANGUAGE_GERMAN  "Zur deutschen Sprache wechseln\nDeutsch"
+END

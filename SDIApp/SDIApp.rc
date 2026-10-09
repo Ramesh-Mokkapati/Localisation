@@ -1,0 +1,57 @@
+// SDIApp.rc - English (default) resources for the SDI application.
+// French strings are loaded at runtime from FrenchDLL.dll.
+
+#include "resource.h"
+#include <afxres.h>
+
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+
+/////////////////////////////////////////////////////////////////////////////
+// Menu
+
+IDR_MAINFRAME MENU
+BEGIN
+    POPUP "&File"
+    BEGIN
+        MENUITEM "E&xit",                       ID_APP_EXIT
+    END
+    POPUP "&Language"
+    BEGIN
+        MENUITEM "&English\tCtrl+E",            ID_LANGUAGE_ENGLISH
+        MENUITEM "&French\tCtrl+F",             ID_LANGUAGE_FRENCH
+        MENUITEM "&German\tCtrl+G",             ID_LANGUAGE_GERMAN
+    END
+    POPUP "&Help"
+    BEGIN
+        MENUITEM "&About SDIApp...",            ID_APP_ABOUT
+    END
+END
+
+/////////////////////////////////////////////////////////////////////////////
+// Accelerator
+
+IDR_MAINFRAME ACCELERATORS
+BEGIN
+    "E",            ID_LANGUAGE_ENGLISH,    VIRTKEY, CONTROL
+    "F",            ID_LANGUAGE_FRENCH,     VIRTKEY, CONTROL
+    "G",            ID_LANGUAGE_GERMAN,     VIRTKEY, CONTROL
+END
+
+/////////////////////////////////////////////////////////////////////////////
+// String Table
+
+STRINGTABLE
+BEGIN
+    IDR_MAINFRAME           "SDIApp - Localisation Demo"
+    AFX_IDS_APP_TITLE       "SDIApp - Localisation Demo"
+    IDS_HELLO               "Hello, World!"
+    IDS_GREETING            "Welcome to the Localisation Demo"
+    IDS_LANGUAGE            "Language: English (Default)"
+    IDS_GOODBYE             "Goodbye!"
+    IDS_INSTRUCTION         "Use the Language menu (or Ctrl+E / Ctrl+F) to switch languages"
+    IDS_ABOUT_TITLE         "About SDIApp"
+    IDS_ABOUT_TEXT          "SDIApp - Localisation Demo\nVisual Studio 2022 / MFC / Win32\n\nDemonstrates runtime language switching\nusing resource-only DLLs and AfxSetResourceHandle."
+    ID_LANGUAGE_ENGLISH     "Switch display language to English\nEnglish"
+    ID_LANGUAGE_FRENCH      "Switch display language to French\nFrench"
+    ID_LANGUAGE_GERMAN      "Switch display language to German\nGerman"
+END

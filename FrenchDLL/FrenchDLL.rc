@@ -1,0 +1,60 @@
+// FrenchDLL.rc - French string and menu resources
+// #pragma code_page(65001) tells the RC compiler to treat this file as UTF-8.
+// All non-ASCII characters are written directly rather than using \xNN escapes.
+#pragma code_page(65001)
+#include <winresrc.h>
+#include <afxres.h>
+#include "resource.h"
+
+LANGUAGE LANG_FRENCH, SUBLANG_FRENCH
+
+/////////////////////////////////////////////////////////////////////////////
+// Menu
+
+IDR_MAINFRAME MENU
+BEGIN
+    POPUP "&Fichier"
+    BEGIN
+        MENUITEM "E&xiter",                         ID_APP_EXIT
+    END
+    POPUP "&Langue"
+    BEGIN
+        MENUITEM "&Anglais\tCtrl+E",                ID_LANGUAGE_ENGLISH
+        MENUITEM "&Français\tCtrl+F",               ID_LANGUAGE_FRENCH
+        MENUITEM "&Allemand\tCtrl+G",               ID_LANGUAGE_GERMAN
+    END
+    POPUP "&Aide"
+    BEGIN
+        MENUITEM "&À propos de SDIApp...",          ID_APP_ABOUT
+    END
+END
+
+/////////////////////////////////////////////////////////////////////////////
+// Accelerator Table (must match SDIApp's table so CFrameWnd::LoadAccelTable
+// does not assert when the resource handle points here)
+
+IDR_MAINFRAME ACCELERATORS
+BEGIN
+    "E",    ID_LANGUAGE_ENGLISH,    VIRTKEY, CONTROL
+    "F",    ID_LANGUAGE_FRENCH,     VIRTKEY, CONTROL
+    "G",    ID_LANGUAGE_GERMAN,     VIRTKEY, CONTROL
+END
+
+/////////////////////////////////////////////////////////////////////////////
+// String Table
+
+STRINGTABLE
+BEGIN
+    IDR_MAINFRAME       "SDIApp"
+    IDS_HELLO           "Bonjour, Monde !"
+    IDS_GREETING        "Bienvenue dans la démo de localisation"
+    IDS_LANGUAGE        "Langue : Français"
+    IDS_GOODBYE         "Au revoir !"
+    IDS_INSTRUCTION     "Utilisez le menu Langue pour changer de langue"
+    IDS_ABOUT_TITLE     "À propos de SDIApp"
+    IDS_ABOUT_TEXT      "SDIApp — Démo de localisation\nVisual Studio 2022 / MFC / Win32\n\nDémontre le changement de langue dynamique\nà l'aide de DLL de ressources uniquement."
+    IDS_BTN_EXIT        "Quitter"
+    ID_LANGUAGE_ENGLISH "Passer à la langue anglaise\nAnglais"
+    ID_LANGUAGE_FRENCH  "Passer à la langue française\nFrançais"
+    ID_LANGUAGE_GERMAN  "Passer à la langue allemande\nAllemand"
+END

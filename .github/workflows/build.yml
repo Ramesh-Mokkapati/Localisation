@@ -1,0 +1,69 @@
+name: CI
+
+on:
+  push:
+    branches: ["main", "master"]
+  pull_request:
+    branches: ["main", "master"]
+
+jobs:
+  build:
+    name: ${{ matrix.configuration }}|x64
+    runs-on: windows-2022
+    timeout-minutes: 30
+
+    strategy:
+      fail-fast: false
+      matrix:
+        configuration: [Debug, Release]
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+
+      - name: Set up MSBuild
+        uses: microsoft/setup-msbuild@v3
+
+      # ── Build ──────────────────────────────────────────────────────────────
+      # Builds all six projects in one pass:
+      #   EnglishDLL, FrenchDLL, GermanDLL  (resource-only satellite DLLs)
+      #   CommandLine, SDIApp, DialogApp     (host applications)
+      # /m enables parallel compilation; solution dependencies ensure the DLLs
+      # are built before the apps that load them at runtime.
+      - name: Build
+        run: |
+          msbuild Localisation.sln `
+            /p:Configuration=${{ matrix.configuration }} `
+            /p:Platform=x64 `
+            /m `
+            /v:minimal `
+            /nologo
+        shell: pwsh
+
+      # All six outputs land in the shared bin directory. The DLLs are placed
+      # beside the executables so LoadLibrary("FrenchDLL.dll") etc. resolve
+      # without any extra PATH configuration.
+      - name: Upload binaries
+        uses: actions/upload-artifact@v6
+        with:
+          name: ${{ matrix.configuration }}-x64
+          path: bin/x64/${{ matrix.configuration }}/
+          if-no-files-found: error
+
+  # ── Merge ───────────────────────────────────────────────────────────────────
+  # Combine the per-configuration artifacts into a single named archive so
+  # consumers download one zip instead of two.
+  merge:
+    name: Merge ${{ matrix.configuration }} artifacts
+    runs-on: ubuntu-24.04
+    needs: build
+    strategy:
+      matrix:
+        configuration: [Debug, Release]
+    steps:
+      - name: Merge into single ${{ matrix.configuration }} archive
+        uses: actions/upload-artifact/merge@v6
+        with:
+          name: ${{ matrix.configuration }}
+          pattern: ${{ matrix.configuration }}-*
+          delete-merged: true

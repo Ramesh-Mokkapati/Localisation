@@ -1,0 +1,36 @@
+# Visual Studio build output
+bin/
+obj/
+*.exe
+*.dll
+*.pdb
+*.ilk
+*.exp
+*.lib
+*.iobj
+*.ipdb
+
+# Visual Studio project files
+.vs/
+*.user
+*.suo
+*.aps
+*.ncb
+*.sdf
+*.opensdf
+*.cachefile
+*.VC.db
+*.VC.opendb
+
+# Compiled resources
+*.res
+
+# CMake (if ever adopted)
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+
+# OS metadata
+Thumbs.db
+Desktop.ini
+.DS_Store
