@@ -4,6 +4,20 @@ A Visual Studio 2022 C++ solution demonstrating **runtime language switching** u
 
 ---
 
+## Screenshots
+
+**DialogApp** in each language. The strings, title bar and Exit button come from the active language DLL:
+
+| English | French | German |
+|---|---|---|
+| ![DialogApp in English](docs/screenshots/dialog-english.png) | ![DialogApp in French](docs/screenshots/dialog-french.png) | ![DialogApp in German](docs/screenshots/dialog-german.png) |
+
+**SDIApp** in German, with the translated menu bar (*Datei*, *Sprache*, *Hilfe*) loaded from `GermanDLL.dll`:
+
+![SDIApp in German with the translated menu bar and localised strings](docs/screenshots/sdi-german.png)
+
+---
+
 ## Solution Structure
 
 ```
